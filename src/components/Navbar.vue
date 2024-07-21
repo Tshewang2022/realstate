@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterLink } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { Disclosure, DisclosureButton } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
@@ -8,7 +8,8 @@ import { navMenus } from '@/data/userdata'
 
 const showProfile = ref(false)
 const route = useRoute()
-
+// if the whole console is getting refreshed,it means whole page is reloading. which is  not really good performance
+// not implemented the router rules, where it will be read by the routerview
 // will create a method that will push to the particular routes
 </script>
 <template>
@@ -30,10 +31,10 @@ const route = useRoute()
           <div class="flex flex-shrink-0 items-center"></div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <a
+              <RouterLink
                 v-for="menu in navMenus"
                 :key="menu.id"
-                href="#"
+                :to="`/${menu.id}`"
                 :class="[
                   menu.current
                     ? 'bg-gray-900 text-black'
@@ -41,7 +42,7 @@ const route = useRoute()
                   'rounded-md px-3 py-2 text-sm font-medium'
                 ]"
                 :aria-current="menu.current ? 'page' : undefined"
-                >{{ menu.menu }}</a
+                >{{ menu.menu }}</RouterLink
               >
             </div>
           </div>
@@ -107,7 +108,8 @@ const route = useRoute()
           v-for="menu in navMenus"
           :key="menu.id"
           as="a"
-          href="#"
+          RouterLink
+          :to="menu.route"
           :class="[
             menu.current
               ? 'bg-gray-900 text-white'
