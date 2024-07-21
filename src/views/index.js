@@ -1,0 +1,6 @@
+export { default as AboutUS } from '../views/AboutUs.vue'
+export { default as Blogs } from '../views/Blogs.vue'
+export { default as ContactUs } from '../views/ContactUs.vue'
+export { default as Gallery } from '../views/Gallery.vue'
+export { default as OurAgents } from '../views/OurAgents.vue'
+export { default as Projects } from '../views/Projects.vue'
