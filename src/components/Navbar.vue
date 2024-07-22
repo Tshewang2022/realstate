@@ -34,7 +34,7 @@ const route = useRoute()
               <RouterLink
                 v-for="menu in navMenus"
                 :key="menu.id"
-                :to="`/${menu.id}`"
+                :to="`/cars/${menu.id}`"
                 :class="[
                   menu.current
                     ? 'bg-gray-900 text-black'
